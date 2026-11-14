@@ -1,6 +1,7 @@
 import { useRef, useState, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Volume2, VolumeX, RotateCcw, Sparkles, ArrowLeft } from 'lucide-react';
+import { Volume2, VolumeX, RotateCcw, Sparkles, ArrowLeft, ExternalLink } from 'lucide-react';
+import { QRCodeSVG } from 'qrcode.react';
 import { QUESTIONS, toPersianDigits } from './data/questions';
 import { EvasiveButton } from './components/EvasiveButton';
 import { ParticleBurst, type BurstEvent } from './components/ParticleBurst';
@@ -313,13 +314,46 @@ export default function App() {
                         قرار دمنوش قطعی شد!
                       </h1>
 
-                      <p className="text-base sm:text-lg leading-relaxed text-[#172B2E]/80 max-w-xl">
-                        خب دیگه همه‌چیز ردیفه؛ دمنوش گرم و خوش‌عطر آماده‌ست تا بعدش یه دل سیر
-                        درباره کتاب «ماهی قرمز توی آکواریوم» صحبت کنیم.
+                      <p className="text-base sm:text-lg font-semibold leading-relaxed text-[#E85D3F]">
+                        من خطمو پرداخت نکردم
                       </p>
 
+                      {/* Instagram QR Code */}
+                      <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-5 pt-1">
+                        <motion.div
+                          initial={{ opacity: 0, scale: 0.92 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ delay: 0.12, duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                          className="p-3.5 rounded-2xl bg-white border border-[#172B2E]/12 shadow-sm shrink-0"
+                        >
+                          <QRCodeSVG
+                            value="https://www.instagram.com/abolfazlhassanpour10"
+                            size={156}
+                            level="M"
+                            fgColor="#172B2E"
+                            bgColor="#FFFFFF"
+                          />
+                        </motion.div>
+
+                        <div className="flex flex-col items-center sm:items-start text-center sm:text-right gap-2">
+                          <span className="text-sm text-[#172B2E]/75 leading-relaxed">
+                            برای پیدا کردن من در اینستاگرام، کد QR رو اسکن کن یا روی لینک زیر بزن:
+                          </span>
+                          <a
+                            href="https://www.instagram.com/abolfazlhassanpour10"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            dir="ltr"
+                            className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#0F5E63] hover:text-[#E85D3F] transition-colors underline underline-offset-4"
+                          >
+                            <span>@abolfazlhassanpour10</span>
+                            <ExternalLink className="w-3.5 h-3.5" />
+                          </a>
+                        </div>
+                      </div>
+
                       {/* Clean unboxed summary stats */}
-                      <div className="pt-2 border-t border-[#172B2E]/10 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-[#172B2E]/70">
+                      <div className="pt-3 border-t border-[#172B2E]/10 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-[#172B2E]/70">
                         <span className="tabular-nums">
                           مراحل تکمیل‌شده: {toPersianDigits(QUESTIONS.length)} از{' '}
                           {toPersianDigits(QUESTIONS.length)}

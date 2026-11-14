@@ -1,6 +1,6 @@
 import { useRef, useState, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Volume2, VolumeX, RotateCcw, Sparkles, ArrowLeft, ArrowDown, ExternalLink } from 'lucide-react';
+import { Volume2, VolumeX, RotateCcw, Sparkles, ArrowLeft, ArrowDown } from 'lucide-react';
 import { QRCodeSVG } from 'qrcode.react';
 import { QUESTIONS, toPersianDigits } from './data/questions';
 import { EvasiveButton } from './components/EvasiveButton';
@@ -315,7 +315,9 @@ export default function App() {
                       </h1>
 
                       <p className="text-base sm:text-lg font-semibold leading-relaxed text-[#E85D3F]">
-                        من خطمو پرداخت نکردم میخوای ارتباط بگیری اینو اسکن کن
+                        من خطمو پرداخت نکردم نمیتونم بهت زنگ بزنم
+                        <br />
+                        خواستی ارتباط بگیری میدونی که باید اینو اسکن کنی
                       </p>
 
                       {/* Centered Instagram QR Code with animated pointing arrow */}
@@ -347,17 +349,6 @@ export default function App() {
                             bgColor="#FFFFFF"
                           />
                         </motion.div>
-
-                        <a
-                          href="https://www.instagram.com/abolfazlhassanpour10"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          dir="ltr"
-                          className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#0F5E63] hover:text-[#E85D3F] transition-colors underline underline-offset-4"
-                        >
-                          <span>@abolfazlhassanpour10</span>
-                          <ExternalLink className="w-3.5 h-3.5" />
-                        </a>
                       </div>
 
                       {/* Clean unboxed summary stats */}

@@ -1,6 +1,6 @@
 import { useRef, useState, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Volume2, VolumeX, RotateCcw, Sparkles, ArrowLeft, ExternalLink } from 'lucide-react';
+import { Volume2, VolumeX, RotateCcw, Sparkles, ArrowLeft, ArrowDown, ExternalLink } from 'lucide-react';
 import { QRCodeSVG } from 'qrcode.react';
 import { QUESTIONS, toPersianDigits } from './data/questions';
 import { EvasiveButton } from './components/EvasiveButton';
@@ -315,11 +315,24 @@ export default function App() {
                       </h1>
 
                       <p className="text-base sm:text-lg font-semibold leading-relaxed text-[#E85D3F]">
-                        من خطمو پرداخت نکردم
+                        من خطمو پرداخت نکردم میخوای ارتباط بگیری اینو اسکن کن
                       </p>
 
-                      {/* Instagram QR Code */}
-                      <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-5 pt-1">
+                      {/* Centered Instagram QR Code with animated pointing arrow */}
+                      <div className="flex flex-col items-center justify-center gap-3 pt-1 w-full">
+                        <motion.div
+                          animate={{ y: [0, 6, 0] }}
+                          transition={{
+                            duration: 1.4,
+                            repeat: Infinity,
+                            ease: 'easeInOut',
+                          }}
+                          className="text-[#E85D3F]"
+                          aria-hidden="true"
+                        >
+                          <ArrowDown className="w-6 h-6 stroke-[2.5]" />
+                        </motion.div>
+
                         <motion.div
                           initial={{ opacity: 0, scale: 0.92 }}
                           animate={{ opacity: 1, scale: 1 }}
@@ -328,32 +341,27 @@ export default function App() {
                         >
                           <QRCodeSVG
                             value="https://www.instagram.com/abolfazlhassanpour10"
-                            size={156}
+                            size={164}
                             level="M"
                             fgColor="#172B2E"
                             bgColor="#FFFFFF"
                           />
                         </motion.div>
 
-                        <div className="flex flex-col items-center sm:items-start text-center sm:text-right gap-2">
-                          <span className="text-sm text-[#172B2E]/75 leading-relaxed">
-                            برای پیدا کردن من در اینستاگرام، کد QR رو اسکن کن یا روی لینک زیر بزن:
-                          </span>
-                          <a
-                            href="https://www.instagram.com/abolfazlhassanpour10"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            dir="ltr"
-                            className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#0F5E63] hover:text-[#E85D3F] transition-colors underline underline-offset-4"
-                          >
-                            <span>@abolfazlhassanpour10</span>
-                            <ExternalLink className="w-3.5 h-3.5" />
-                          </a>
-                        </div>
+                        <a
+                          href="https://www.instagram.com/abolfazlhassanpour10"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          dir="ltr"
+                          className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#0F5E63] hover:text-[#E85D3F] transition-colors underline underline-offset-4"
+                        >
+                          <span>@abolfazlhassanpour10</span>
+                          <ExternalLink className="w-3.5 h-3.5" />
+                        </a>
                       </div>
 
                       {/* Clean unboxed summary stats */}
-                      <div className="pt-3 border-t border-[#172B2E]/10 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-[#172B2E]/70">
+                      <div className="pt-3 border-t border-[#172B2E]/10 flex flex-wrap items-center justify-center sm:justify-start gap-x-4 gap-y-2 text-sm text-[#172B2E]/70">
                         <span className="tabular-nums">
                           مراحل تکمیل‌شده: {toPersianDigits(QUESTIONS.length)} از{' '}
                           {toPersianDigits(QUESTIONS.length)}
@@ -368,7 +376,7 @@ export default function App() {
                       </div>
                     </div>
 
-                    <div className="pt-2 flex flex-wrap items-center gap-3">
+                    <div className="pt-2 flex flex-wrap items-center justify-center sm:justify-start gap-3">
                       <motion.button
                         type="button"
                         onClick={handleRestart}

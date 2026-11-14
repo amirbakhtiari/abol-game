@@ -1,0 +1,6 @@
+{
+  "name": "ماهی قرمز توی آکواریوم",
+  "description": "یک پرسش‌نامه تعاملی، سرگرم‌کننده و موبایل‌پسند با دکمه‌های فراری و انیمیشن‌های جذاب",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
